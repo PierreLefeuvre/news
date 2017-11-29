@@ -11,9 +11,14 @@
         <div class='col-md-2'>
             <div class='list-group' role='group'>
                 <a class='list-group-item' routerLink="/news" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                <a class='list-group-item' routerLink="/meteo" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Météo</a>
                 <a class='list-group-item' routerLink="/news/add" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">+ news</a>
             </div>
             <app-bitcoin></app-bitcoin>
+
+            <a routerLink="/meteo" >
+            <app-preview-meteo [date]="meteoDate"></app-preview-meteo>
+            </a>
         </div>
     </div>
 

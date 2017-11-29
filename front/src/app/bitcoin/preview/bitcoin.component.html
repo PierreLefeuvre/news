@@ -4,5 +4,5 @@
 
     <span class='btc'>Bitcoin value:</span>
 
-    <b>{{ data.bpi.USD.rate }}</b> {{ data.bpi.USD.code }}
+    <b>{{ data.bpi.USD.rate_float | number : '1.2-2' }}</b> {{ data.bpi.USD.code }}
 </div>

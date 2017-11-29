@@ -1,0 +1,24 @@
+.meteo{
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin-top: 25px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    text-align: center;
+    min-height: 205px;
+}
+
+.meteo img{
+    max-width: 100px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+.meteo span{
+    display: block;
+}

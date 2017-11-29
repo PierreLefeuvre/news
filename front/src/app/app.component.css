@@ -1,6 +1,7 @@
 .page-header{
     background-color: #337ab7;
     color: white;
+    font-family: 'Courgette', cursive;
 }
 .page-header > h1{
     margin-left: 15px;
@@ -38,4 +39,5 @@ h3.bandeau{
     left: -26px;
     padding-left: 10px;
     padding-right: 10px;
+    font-family: 'Courgette', cursive;
 }

@@ -26,7 +26,11 @@ export class BitcoinComponent implements OnInit {
         },
         error => {
           console.log(error);
-          this.http.get('assets/bpi.json').subscribe(r => this.data = r); 
+          this.http.get('assets/bpi.json').subscribe(r => {
+            this.data = r;
+             console.log(this.data);
+          }); 
+         
         }
       );
   }

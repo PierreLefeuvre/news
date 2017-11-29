@@ -1,0 +1,5 @@
+<h3 class='bandeau'>Météo:</h3>
+
+<div *ngFor="let date of dates" class='col-md-3'>
+    <app-preview-meteo [date]="date"></app-preview-meteo>
+</div>
