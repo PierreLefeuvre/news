@@ -1,0 +1,36 @@
+<div style=''>
+
+<h3 class='bandeau'>Ecrire une news:</h3>
+
+<div class='row'>
+
+  <div class="col-md-10">
+    <form (ngSubmit)="onSubmit(newsForm)" #newsForm="ngForm"> 
+
+        <div class='form-group'>
+          <label>title</label>
+          <input class='form-control' type='text' [(ngModel)]="news.title" name='title' placeholder='title' required>
+          
+        </div>
+
+        <div class='form-group'>
+          <label>content </label>
+          <textarea class='form-control' [(ngModel)]="news.content" name='content' required ></textarea>
+        
+        </div>
+
+        <input type='submit' class='btn btn-default pull-right' value='sauvegarder'>
+    
+    </form>
+  </div>
+</div>
+
+<div class='row' *ngIf="news.title!=='' || news.content!==''">
+  <label>Aperçu:</label>
+  <div class='col-md-12 jumbotron'>
+      <h2>{{ news.title }}</h2>      
+      <p>{{ news.content }}</p>
+  </div>
+</div>
+
+</div>

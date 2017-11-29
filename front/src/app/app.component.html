@@ -1,0 +1,20 @@
+<div class='page-header'>
+    <h1>{{ title }}</h1>
+</div>
+
+<div class='container-fluid'>
+    
+    <div class='row' style='margin-left: 20px;'>
+        <div class='col-md-10 main'>
+            <router-outlet></router-outlet>
+        </div>
+        <div class='col-md-2'>
+            <div class='list-group' role='group'>
+                <a class='list-group-item' routerLink="/news" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                <a class='list-group-item' routerLink="/news/add" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">+ news</a>
+            </div>
+            <app-bitcoin></app-bitcoin>
+        </div>
+    </div>
+
+</div>

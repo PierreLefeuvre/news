@@ -1,0 +1,29 @@
+<div style='padding-left: 20px;padding-right: 20px;'>
+<div *ngIf="loading" class='loading'>Loading...</div>
+
+<div class='row'>
+    <div class='col-md-12' *ngIf="!loading">
+        <news-template [news]="news" [link]="false" [commentCount]="news.listComments.length"></news-template>
+    </div>
+</div>
+
+<div class='row' *ngIf="!loading">
+    <span>Commentaire:</span>
+    <form (ngSubmit)="addComment(commentForm); "  #commentForm="ngForm"  style='max-width: 600px;'>
+        
+        <div class='form-group'>
+            <textarea class='form-control' name="comment" [(ngModel)]="comment.comment" required ></textarea>
+        </div>
+        
+        <input type='submit' class='btn btn-default pull-right' value='Envoyer' [disabled]="!commentForm.form.valid">
+    </form>
+</div>
+
+<div class='row' *ngFor="let c of news.listComments" >
+    <div class='comments'>
+        <span class='name'>{{ c.name }}</span><br>
+         <span class='date'>{{ c.created_at | date: "dd/MM hh:mm" }}</span>  <br>
+        <span class='message'>{{ c.comment }}</span>
+    </div>
+</div>
+</div>

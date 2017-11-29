@@ -1,0 +1,37 @@
+<div>
+
+  <h3 class='bandeau'>Editer une news:</h3>
+
+<div *ngIf="loading" class='loading'>Loading...</div>
+
+<div *ngIf="!loading">
+<div class='row'>
+  <div class="col-md-10">
+  <form (ngSubmit)="onSubmit(newsForm)" #newsForm="ngForm">
+
+        <div class='form-group'>
+          <label>title</label>
+          <input class='form-control' type='text' [(ngModel)]="news.title" name='title' placeholder='title' required>
+          
+        </div>
+
+        <div class='form-group'>
+          <label>content </label>
+          <textarea class='form-control' [(ngModel)]="news.content" name='content' required ></textarea>
+        
+        </div>
+
+        <input type='submit' class='btn btn-default pull-right' value='sauvegarder'>
+      
+  </form>
+  </div>
+</div>
+
+<div class='row'>
+  <label>Aperçu:</label>
+  <news-template [news]="news" [link]="true" [btnAdmin]="false"></news-template>
+</div>
+
+</div>
+
+</div>

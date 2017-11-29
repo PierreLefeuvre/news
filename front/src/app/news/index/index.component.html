@@ -1,0 +1,15 @@
+<div class=''>
+
+    <h3 class='bandeau'>Dernière news:</h3>
+    
+    <div *ngIf="loading" class='loading'>Loading...</div>
+    
+    <div class='alert alert-danger' *ngIf="error.length !== 0">{{ error }}</div>
+
+    <div *ngFor="let news of listNews" class='row'>
+        <div class='col-md-12'>
+            <news-template [news]="news" [link]="true" [commentCount]="news.listComments.length"></news-template>
+             <span class='line'></span>
+        </div>              
+    </div>
+</div>

@@ -1,0 +1,41 @@
+.page-header{
+    background-color: #337ab7;
+    color: white;
+}
+.page-header > h1{
+    margin-left: 15px;
+}
+.loading{
+    margin-top: 35px;
+    font-weight: bold;
+}
+
+.ng-valid[required], .ng-valid.required{
+    border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+}
+body{
+    background-color: #F5F5F4 ! important;
+}
+.main{
+    background-color: white;
+    border-radius: 5px;
+    min-height: 100vh !important;
+    padding: 50px !important;
+    padding-top: 80px !important;
+}
+
+h3.bandeau{
+    transform: rotate(-35deg);
+    position: absolute;
+    display: inline-block;
+    background-color: #337ab7;
+    color: white;
+    top: 14px;
+    left: -26px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

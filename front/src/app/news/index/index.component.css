@@ -1,0 +1,7 @@
+.line{
+    display:block;
+    width:100%;
+    padding: 10px;
+    border-bottom: 1px solid #E6E6E5;
+    margin-bottom: 15px;
+}
