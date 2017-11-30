@@ -20,4 +20,8 @@ export class TemplateComponent {
     delete = function(id){
         this.newsService.deleteNews(id).subscribe(res => window.location.reload());
     }
+
+    replace = function(a, b, string){
+      return string.split(a).join(b);
+    }
 }

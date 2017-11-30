@@ -13,7 +13,6 @@ class News extends Model
 
     public function getContentAttribute($value)
     {
-        return str_replace("\n", '<br>', $value);
+        return str_replace('<br>',"\n", $value);
     }
-
 }

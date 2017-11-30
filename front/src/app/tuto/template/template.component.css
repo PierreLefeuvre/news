@@ -19,3 +19,6 @@
     font-size: 18px;
     display: block;
 }
+.btn-admin button{
+    margin-left: 2px;
+}

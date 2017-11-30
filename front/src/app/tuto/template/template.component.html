@@ -24,7 +24,7 @@
     <span class="glyphicon glyphicon-comment"></span>
   </div>
 
-  <span class='content' [innerHTML]="news.content"></span>
+  <span class='content' [innerHTML]='replace("\n","<br>", news.content)'></span>
 
 
 </div>
