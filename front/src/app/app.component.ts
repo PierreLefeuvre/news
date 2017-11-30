@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,10 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css', '../assets/css/bootstrap.min.css']
 })
 export class AppComponent implements OnInit{
-  title = 'News';
-
+  title = 'Tableau de bords';
   meteoDate:Date;
+  
+  constructor(private router:Router, private authGuard:AuthGuard){}
 
   ngOnInit() {
     var d = new Date();
@@ -18,4 +21,8 @@ export class AppComponent implements OnInit{
     this.meteoDate = d;
   }
 
+  logout = function(){
+    localStorage.setItem('auth', 'false');
+    this.router.navigate(['/news']);
+  }
 }

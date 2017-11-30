@@ -17,10 +17,7 @@ export class PreviewComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
-
     this.getMeteo();
-
-
   }
 
   getMeteo = function(){
@@ -28,7 +25,7 @@ export class PreviewComponent implements OnInit {
       this.http.get(this.url).subscribe(result => {
           this.data = result;
           this.selectImage();
-          console.log(result);
+          //console.log(result);
         },
         error => console.log(error)
         );

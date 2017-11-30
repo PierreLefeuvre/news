@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import { NewsService } from '../news.service';
-import { News } from '../news';
-
+import { TutoService } from '../tuto.service';
+import { Tuto } from '../tuto';
 import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css'],
-  providers: [NewsService]
+  providers: [TutoService]
 })
 export class IndexComponent implements OnInit {
 
     loading:boolean = true;
-    listNews:News[] = [];
+    listNews:Tuto[] = [];
     error:any ='';
     commentCount:number=null;
-    constructor(private newsService: NewsService) {  }
+    constructor(public newsService: TutoService) {  }
     
     ngOnInit() : void {
        this.getNews();
@@ -28,7 +27,7 @@ export class IndexComponent implements OnInit {
             result => {
              result.map(res => {
                  res.listComments = [];
-                 this.listNews.push(res as News);
+                 this.listNews.push(res as Tuto);
                  this.getComments(res.id);
                 })
              this.loading = false;

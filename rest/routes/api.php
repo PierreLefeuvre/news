@@ -20,6 +20,13 @@ Route::group(['middleware' => ['cors','auth.basic']], function(){
     Route::post('/comments', 'CommentsController@store');
 });
 
+Route::group(['middleware' => ['cors','auth.basic']], function(){
+    Route::resource('tuto',  'TutoController');
+
+    Route::get('/tuto/{news_id}/comments', 'CommentsController@show');
+    Route::post('/comments', 'CommentsController@store');
+});
+
 // Route::group(['middleware' => ['cors','auth.basic']], function(){
 //     Route::ressource('comments', 'CommentsController');
 // });

@@ -1,5 +1,10 @@
 <div class='page-header'>
     <h1>{{ title }}</h1>
+
+    <div class='pull-right' id='btn-log'>
+        <a *ngIf="!authGuard.isLogged()" class='btn btn-default' routerLink="/login">login</a>
+        <a *ngIf="authGuard.isLogged()" class='btn btn-default' (click)="logout()">logout</a>
+    </div>
 </div>
 
 <div class='container-fluid'>
@@ -10,9 +15,11 @@
         </div>
         <div class='col-md-2'>
             <div class='list-group' role='group'>
-                <a class='list-group-item' routerLink="/news" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-                <a class='list-group-item' routerLink="/meteo" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Météo</a>
-                <a class='list-group-item' routerLink="/news/add" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">+ news</a>
+                <a class='list-group-item' routerLink="/news" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">News</a>
+                <a *ngIf="authGuard.isLogged()" class='list-group-item' routerLink="/news/add" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">+ news</a>
+                <a class='list-group-item' routerLink="/tuto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Tuto</a>
+                <a *ngIf="authGuard.isLogged()" class='list-group-item' routerLink="/tuto/add" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">+ tuto</a>
+                <a class='list-group-item' routerLink="/meteo" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Météo</a>                
             </div>
             <app-bitcoin></app-bitcoin>
 

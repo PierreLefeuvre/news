@@ -1,0 +1,21 @@
+.news{
+    /*padding: 25px;
+    padding-left: 40px;
+    padding-right: 40px;*/
+    padding-bottom: 60px;
+}
+
+.news > .date{
+    font-size: 14px;
+    font-style: italic; 
+}
+.news > .title{
+    font-size: 30px;
+    display: block;
+    font-weight: bold;
+}
+.news > .content{
+    padding-top: 20px;
+    font-size: 18px;
+    display: block;
+}

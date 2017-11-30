@@ -1,6 +1,6 @@
 <div class=''>
 
-    <h3 class='bandeau'>Dernières news:</h3>
+    <h3 class='bandeau'>Derniers tutos:</h3>
     
     <div *ngIf="loading" class='loading'>Loading...</div>
     
@@ -8,7 +8,7 @@
 
     <div *ngFor="let news of listNews" class='row'>
         <div class='col-md-12'>
-            <news-template [news]="news" [link]="true" [commentCount]="news.listComments.length"></news-template>
+            <tuto-template [news]="news" [link]="true" [commentCount]="news.listComments.length"></tuto-template>
              <span class='line'></span>
         </div>              
     </div>

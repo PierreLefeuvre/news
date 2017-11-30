@@ -1,21 +1,21 @@
 import { Component, Input } from '@angular/core';
-import { News } from '../news';
-import { NewsService } from '../news.service';
-import { AuthGuard } from '../../auth-guard.service';
+import { Tuto } from '../tuto';
+import { TutoService } from '../tuto.service';
+
 
 @Component({
-  selector: 'news-template',
+  selector: 'tuto-template',
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.css']
 })
 export class TemplateComponent {
 
-  @Input() news: News;
+  @Input() news: Tuto;
   @Input() link: boolean;
   @Input() btnAdmin: boolean=true;
   @Input() commentCount: number=null;
   
-     constructor(public newsService: NewsService, private authGuard:AuthGuard) {  }
+     constructor(public newsService: TutoService) {  }
 
     delete = function(id){
         this.newsService.deleteNews(id).subscribe(res => window.location.reload());

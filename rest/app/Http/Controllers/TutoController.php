@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class NewsController extends Controller
+class TutoController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +18,7 @@ class NewsController extends Controller
     
     public function index()
     {
-        $listNews = News::where('type', 1)->orderBy('updated_at', 'desc')->get();
+        $listNews = News::where('type', 2)->orderBy('updated_at', 'desc')->get();
         return response(json_encode($listNews), 200)->header('Content-Type', 'application/json');;
     }
     public function show($id)
@@ -70,7 +70,7 @@ class NewsController extends Controller
         $news = new News();
         $news->title = $request->get('title');
         $news->content = $request->get('content');
-        $news->type = 1;
+        $news->type = 2;
         $result = $news->save();
 
         if(!$result)

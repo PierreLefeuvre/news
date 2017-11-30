@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { News } from './news';
-import { Comments } from './comments';
+import { Tuto } from './tuto';
+import { Comments } from '../news/comments';
 
 @Injectable()
-export class NewsService {
+export class TutoService {
     private url = 'http://127.0.0.1:8000'
     private pwd = 'lestilo14';
     public user = 'lefpierre@hotmail.fr';
@@ -22,7 +22,7 @@ export class NewsService {
             })
         };
 
-        return this.http.get(this.url + '/api/news', httpOptions);
+        return this.http.get(this.url + '/api/tuto', httpOptions);
     }
     getOneNews(id:number){
        
@@ -32,9 +32,9 @@ export class NewsService {
             })
         };
 
-        return this.http.get(this.url + '/api/news/' +id, httpOptions);
+        return this.http.get(this.url + '/api/tuto/' +id, httpOptions);
     }
-    updateNews(id:number, news: News){
+    updateNews(id:number, news: Tuto){
         
         const httpOptions = { 
             headers: new HttpHeaders({
@@ -46,7 +46,7 @@ export class NewsService {
         var body = { title: news.title,
          content:  news.content};
 
-        return this.http.put(this.url + '/api/news/' + id, body, httpOptions );
+        return this.http.put(this.url + '/api/tuto/' + id, body, httpOptions );
     }
 
     deleteNews(id:number){
@@ -57,9 +57,9 @@ export class NewsService {
             })
         };
 
-        return this.http.delete(this.url+'/api/news/'+id, httpOptions);
+        return this.http.delete(this.url+'/api/tuto/'+id, httpOptions);
     }
-    addNews(news: News){
+    addNews(news: Tuto){
 
         const httpOptions = { 
             headers: new HttpHeaders({
@@ -70,7 +70,7 @@ export class NewsService {
          var body = 'title='+news.title
         +'&content='+ news.content;
 
-        return this.http.post(this.url + '/api/news/', body, httpOptions );
+        return this.http.post(this.url + '/api/tuto/', body, httpOptions );
     }
 
     getComments(news_id: number){
@@ -81,7 +81,7 @@ export class NewsService {
             })
         };
 
-        return this.http.get(this.url + '/api/news/' + news_id + '/comments/',  httpOptions );
+        return this.http.get(this.url + '/api/tuto/' + news_id + '/comments/',  httpOptions );
     }
     addComment(comment:Comments){
         const httpOptions = { 

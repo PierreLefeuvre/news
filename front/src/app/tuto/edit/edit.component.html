@@ -1,11 +1,13 @@
-<div style=''>
+<div>
 
-<h3 class='bandeau'>Ecrire une news:</h3>
+  <h3 class='bandeau'>Editer un tuto:</h3>
 
+<div *ngIf="loading" class='loading'>Loading...</div>
+
+<div *ngIf="!loading">
 <div class='row'>
-
   <div class="col-md-10">
-    <form (ngSubmit)="onSubmit(newsForm)" #newsForm="ngForm"> 
+  <form (ngSubmit)="onSubmit(newsForm)" #newsForm="ngForm">
 
         <div class='form-group'>
           <label>title</label>
@@ -20,15 +22,16 @@
         </div>
 
         <input type='submit' class='btn btn-default pull-right' value='sauvegarder'>
-    
-    </form>
+      
+  </form>
   </div>
 </div>
 
-<div class='row' *ngIf="news.title!=='' || news.content!==''">
+<div class='row'>
   <label>Aperçu:</label>
-  <label>Aperçu:</label>
-  <news-template [news]="news" [link]="true" [btnAdmin]="false" [link]="false"></news-template>
+  <tuto-template [news]="news" [link]="true" [btnAdmin]="false"></tuto-template>
+</div>
+
 </div>
 
 </div>

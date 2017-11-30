@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ViewComponent implements OnInit {
 
   constructor() { }
+
   dates:Date[]= [];
+
   ngOnInit() {
     
     for(var i=0; i<5; i++){
@@ -16,7 +18,6 @@ export class ViewComponent implements OnInit {
       d.setDate(d.getDate() +i);   
       this.dates.push(d);
     }
-
   }
 
 }

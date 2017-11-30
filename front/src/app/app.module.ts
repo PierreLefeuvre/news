@@ -5,22 +5,46 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
+//news
 import { ViewComponent } from './news/view/view.component';
 import { EditComponent } from './news/edit/edit.component';
 import { AddComponent } from './news/add/add.component';
 import { IndexComponent } from './news/index/index.component';
 import { TemplateComponent } from './news/template/template.component';
+
+//bitcoin
 import { BitcoinComponent } from './bitcoin/preview/bitcoin.component';
+
+//meteo
 import { PreviewComponent } from './meteo/preview/preview.component';
 import { ViewComponent as MeteoComponent } from './meteo/view/view.component';
 
+//tuto
+import { IndexComponent as IndexTutoComponent } from './tuto/index/index.component';
+import { AddComponent as AddTutoComponent } from './tuto/add/add.component';
+import { TemplateComponent as TemplateTutoComponent } from './tuto/template/template.component';
+import { ViewComponent as ViewTutoComponent } from './tuto/view/view.component';
+import { EditComponent as EditTutoComponent } from './tuto/edit/edit.component';
+import { LoginComponent } from './login/login/login.component';
+import { AuthGuard } from './auth-guard.service';
+
 const appRoutes: Routes = [
-    { path: 'news', component: IndexComponent},
     { path: '',  component: IndexComponent},
-    { path: 'news/add', component: AddComponent},
+
+    { path: 'news', component: IndexComponent},   
+    { path: 'news/add', component: AddComponent, canActivate: [AuthGuard] },
     { path: 'news/:id/edit',  component: EditComponent},
     { path: 'news/:id',  component: ViewComponent},
-    { path: 'meteo',  component: MeteoComponent}
+
+    { path: 'meteo',  component: MeteoComponent},
+
+    { path: 'tuto', component: IndexTutoComponent},
+    { path: 'tuto/add', component: AddTutoComponent},
+    { path: 'tuto/:id/edit',  component: EditTutoComponent},
+    { path: 'tuto/:id',  component: ViewTutoComponent},
+
+    { path: 'login',  component: LoginComponent}
 ];
 
 @NgModule({
@@ -33,7 +57,13 @@ const appRoutes: Routes = [
     TemplateComponent,
     BitcoinComponent,
     PreviewComponent,
-    MeteoComponent
+    MeteoComponent,
+    IndexTutoComponent,
+    AddTutoComponent,
+    TemplateTutoComponent,
+    ViewTutoComponent,
+    EditTutoComponent,
+    LoginComponent
   ],
   imports: [
       BrowserModule,
@@ -41,7 +71,7 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

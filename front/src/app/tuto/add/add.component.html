@@ -1,6 +1,6 @@
 <div style=''>
 
-<h3 class='bandeau'>Ecrire une news:</h3>
+<h3 class='bandeau'>Ecrire un tuto:</h3>
 
 <div class='row'>
 
@@ -27,8 +27,7 @@
 
 <div class='row' *ngIf="news.title!=='' || news.content!==''">
   <label>Aperçu:</label>
-  <label>Aperçu:</label>
-  <news-template [news]="news" [link]="true" [btnAdmin]="false" [link]="false"></news-template>
+  <tuto-template [news]="news" [link]="true" [btnAdmin]="false" [link]="false"></tuto-template>
 </div>
 
 </div>
