@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        /*$this->middleware('cors');
+        $this->middleware('auth.basic');*/
+    }
+
     public function index(){}
 
     public function update(Request $request, $id){

@@ -64,7 +64,7 @@ export class NewsService {
          var body = 'title='+news.title
         +'&content='+ news.content;
 
-        return this.http.post(this.globals.url + '/api/news/', body, httpOptions );
+        return this.http.post(this.globals.url + '/api/news', body, httpOptions );
     }
 
     getComments(news_id: number){
@@ -75,7 +75,7 @@ export class NewsService {
             })
         };
 
-        return this.http.get(this.globals.url + '/api/news/' + news_id + '/comments/',  httpOptions );
+        return this.http.get(this.globals.url + '/api/news/' + news_id + '/comments',  httpOptions );
     }
     addComment(comment:Comments){
         const httpOptions = { 
@@ -89,7 +89,7 @@ export class NewsService {
         +'&user_id='+ comment.user_id
         +'&comment='+ comment.comment;
 
-        return this.http.post(this.globals.url + '/api/comments/', body, httpOptions );
+        return this.http.post(this.globals.url + '/api/comments', body, httpOptions );
     }
 
     deleteComment(comment_id:number){

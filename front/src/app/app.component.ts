@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   title = 'Tableau de bords';
   meteoDate:Date;
   
-  constructor(private router:Router, private authGuard:AuthGuard){}
+  constructor(private router:Router, public authGuard:AuthGuard){}
 
   ngOnInit() {
     var d = new Date();

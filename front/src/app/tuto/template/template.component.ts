@@ -15,7 +15,7 @@ export class TemplateComponent {
   @Input() btnAdmin: boolean=true;
   @Input() commentCount: number=null;
   
-     constructor(private newsService: TutoService,  private authGuard: AuthGuard) {  }
+     constructor(private newsService: TutoService,  public authGuard: AuthGuard) {  }
 
     delete = function(id){
         this.newsService.deleteNews(id).subscribe(res => window.location.reload());

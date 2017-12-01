@@ -46,7 +46,7 @@ export class IndexComponent implements OnInit {
              this.listNews.find(n => n.id == news_id).listComments = c;
         },
         error => { 
-            this.error(error);
+            console.log(error);
         });
     }
 

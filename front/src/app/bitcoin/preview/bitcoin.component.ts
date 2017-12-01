@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BitcoinComponent implements OnInit {
 
   private url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
-  private data:any = [];
+  public data:any = [];
 
   constructor(private http: HttpClient) { }
 
