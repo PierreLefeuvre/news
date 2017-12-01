@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Tuto } from '../tuto';
 import { TutoService } from '../tuto.service';
-
+import { AuthGuard } from '../../auth-guard.service';
 
 @Component({
   selector: 'tuto-template',
@@ -15,7 +15,7 @@ export class TemplateComponent {
   @Input() btnAdmin: boolean=true;
   @Input() commentCount: number=null;
   
-     constructor(public newsService: TutoService) {  }
+     constructor(private newsService: TutoService,  private authGuard: AuthGuard) {  }
 
     delete = function(id){
         this.newsService.deleteNews(id).subscribe(res => window.location.reload());

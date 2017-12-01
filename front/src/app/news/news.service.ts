@@ -3,91 +3,85 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { News } from './news';
 import { Comments } from './comments';
+import { GlobalsService } from '../globals.service';
 
 @Injectable()
 export class NewsService {
-    private url = 'http://127.0.0.1:8000'
-    private pwd = 'lestilo14';
-    public user = 'lefpierre@hotmail.fr';
-    private auth:string;
-
-    constructor(public http: HttpClient) { 
-        this.auth = btoa(this.user + ':' + this.pwd);
-    }
+    constructor(private http: HttpClient, private globals: GlobalsService) { }
 
     getNews(){
        const httpOptions = { 
             headers: new HttpHeaders({
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
 
-        return this.http.get(this.url + '/api/news', httpOptions);
+        return this.http.get(this.globals.url + '/api/news', httpOptions);
     }
     getOneNews(id:number){
        
        const httpOptions = { 
             headers: new HttpHeaders({
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
 
-        return this.http.get(this.url + '/api/news/' +id, httpOptions);
+        return this.http.get(this.globals.url + '/api/news/' +id, httpOptions);
     }
     updateNews(id:number, news: News){
         
         const httpOptions = { 
             headers: new HttpHeaders({
                // 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8',
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
 
         var body = { title: news.title,
          content:  news.content};
 
-        return this.http.put(this.url + '/api/news/' + id, body, httpOptions );
+        return this.http.put(this.globals.url + '/api/news/' + id, body, httpOptions );
     }
 
     deleteNews(id:number){
 
         const httpOptions = { 
             headers: new HttpHeaders({
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
 
-        return this.http.delete(this.url+'/api/news/'+id, httpOptions);
+        return this.http.delete(this.globals.url+'/api/news/'+id, httpOptions);
     }
     addNews(news: News){
 
         const httpOptions = { 
             headers: new HttpHeaders({
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8',
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
          var body = 'title='+news.title
         +'&content='+ news.content;
 
-        return this.http.post(this.url + '/api/news/', body, httpOptions );
+        return this.http.post(this.globals.url + '/api/news/', body, httpOptions );
     }
 
     getComments(news_id: number){
         const httpOptions = { 
             headers: new HttpHeaders({
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8',
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
 
-        return this.http.get(this.url + '/api/news/' + news_id + '/comments/',  httpOptions );
+        return this.http.get(this.globals.url + '/api/news/' + news_id + '/comments/',  httpOptions );
     }
     addComment(comment:Comments){
         const httpOptions = { 
             headers: new HttpHeaders({
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8',
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
 
@@ -95,16 +89,16 @@ export class NewsService {
         +'&user_id='+ comment.user_id
         +'&comment='+ comment.comment;
 
-        return this.http.post(this.url + '/api/comments/', body, httpOptions );
+        return this.http.post(this.globals.url + '/api/comments/', body, httpOptions );
     }
 
     deleteComment(comment_id:number){
         const httpOptions = { 
             headers: new HttpHeaders({
-                'Authorization' : 'Basic ' + this.auth
+                'Authorization' : 'Basic ' + this.globals.auth
             })
         };
 
-        return this.http.delete(this.url + '/api/comments/'+ comment_id);
+        return this.http.delete(this.globals.url + '/api/comments/'+ comment_id);
     }
 }

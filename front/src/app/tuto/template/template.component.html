@@ -1,5 +1,5 @@
 <div class="news">
-  <div class='btn-admin' *ngIf="btnAdmin">
+  <div class='btn-admin' *ngIf="btnAdmin && authGuard.isLogged()">
       <button type="button" class="btn btn-default pull-right" (click)="delete(news.id)">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>    
       </button>

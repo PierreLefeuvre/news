@@ -19,6 +19,7 @@ import { BitcoinComponent } from './bitcoin/preview/bitcoin.component';
 //meteo
 import { PreviewComponent } from './meteo/preview/preview.component';
 import { ViewComponent as MeteoComponent } from './meteo/view/view.component';
+import { MeteoService } from './meteo/meteo.service';
 
 //tuto
 import { IndexComponent as IndexTutoComponent } from './tuto/index/index.component';
@@ -27,21 +28,23 @@ import { TemplateComponent as TemplateTutoComponent } from './tuto/template/temp
 import { ViewComponent as ViewTutoComponent } from './tuto/view/view.component';
 import { EditComponent as EditTutoComponent } from './tuto/edit/edit.component';
 import { LoginComponent } from './login/login/login.component';
+
 import { AuthGuard } from './auth-guard.service';
+import { GlobalsService } from './globals.service';
 
 const appRoutes: Routes = [
     { path: '',  component: IndexComponent},
 
     { path: 'news', component: IndexComponent},   
     { path: 'news/add', component: AddComponent, canActivate: [AuthGuard] },
-    { path: 'news/:id/edit',  component: EditComponent},
+    { path: 'news/:id/edit',  component: EditComponent, canActivate: [AuthGuard]},
     { path: 'news/:id',  component: ViewComponent},
 
     { path: 'meteo',  component: MeteoComponent},
 
     { path: 'tuto', component: IndexTutoComponent},
-    { path: 'tuto/add', component: AddTutoComponent},
-    { path: 'tuto/:id/edit',  component: EditTutoComponent},
+    { path: 'tuto/add', component: AddTutoComponent, canActivate: [AuthGuard]},
+    { path: 'tuto/:id/edit',  component: EditTutoComponent , canActivate: [AuthGuard]},
     { path: 'tuto/:id',  component: ViewTutoComponent},
 
     { path: 'login',  component: LoginComponent}
@@ -71,7 +74,7 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       FormsModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, GlobalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,20 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MeteoService } from '../meteo.service';
 
 @Component({
   selector: 'app-preview-meteo',
   templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.css']
+  styleUrls: ['./preview.component.css'],
+  providers: [ MeteoService ]
 })
 export class PreviewComponent implements OnInit {
 
-  url:string = 'http://www.infoclimat.fr/public-api/gfs/json?_ll=49.182863,-0.37067899999999554&_auth=Bx1WQQ5wAyFTfgQzBXNWf1M7AjcPeQgvUS1RMgtuVypWPV4%2FUTFWMF8xVSgAL1dhAy5UNwswVGRQO1cvDH5VNAdtVjoOZQNkUzwEYQUqVn1TfQJjDy8IL1E1UTELeFc1VjZePFEsVjVfNlUpADJXYAMvVCsLNVRpUDJXMQxoVTIHYFYwDmUDaVMjBHkFMFYzU2ECNw83CDBRNFE2C2FXZlY0XjtRM1Y3Xy5VMAA5V2QDOFQ1CzRUblA7Vy8MflVPBxdWLw4tAyNTaQQgBShWN1M%2BAjY%3D&_c=5fdfebdde184f569b3b1dfdb90980fe4';
   data:any=[];
-  lieu:string = 'Caen';
   @Input() date:Date=new Date();
-  image:string='../../assets/img/meteo/soleil.svg';
+  image:string;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private meteoService: MeteoService) { }
 
   ngOnInit() {
     this.getMeteo();
@@ -22,10 +22,10 @@ export class PreviewComponent implements OnInit {
 
   getMeteo = function(){
      
-      this.http.get(this.url).subscribe(result => {
+      this.meteoService.getMeteo().subscribe(result => {
           this.data = result;
           this.selectImage();
-          //console.log(result);
+          console.log(result);
         },
         error => console.log(error)
         );
@@ -37,6 +37,8 @@ export class PreviewComponent implements OnInit {
           this.image = '../../assets/img/meteo/pluie.svg';
         }else if(this.data[this.dateFormat(this.date)].nebulosite.moyenne > 60){
           this.image = '../../assets/img/meteo/nuage.svg';
+        }else{
+          this.image = '../../assets/img/meteo/soleil.svg';
         }
   }
   kelvinToCelsius = function(kelvin: number){
