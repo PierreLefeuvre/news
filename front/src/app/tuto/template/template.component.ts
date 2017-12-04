@@ -21,7 +21,11 @@ export class TemplateComponent {
         this.newsService.deleteNews(id).subscribe(res => window.location.reload());
     }
 
-    replace = function(a, b, string){
-      return string.split(a).join(b);
+    escapeRegExp = function (string){
+      return string.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+    }
+
+    replace = function(term, replacement, str){
+      return str.replace(new RegExp(this.escapeRegExp(term), 'g'), replacement);
     }
 }
