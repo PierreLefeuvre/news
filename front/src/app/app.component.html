@@ -22,7 +22,8 @@
                 <a (click)="setTitle('Tableau de bords - meteo')" class='list-group-item' routerLink="/meteo" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Météo</a>                
             </div>
             <app-bitcoin></app-bitcoin>
-
+            <hr>
+            <app-ether></app-ether>
             <a routerLink="/meteo" >
             <app-preview-meteo [date]="meteoDate"></app-preview-meteo>
             </a>

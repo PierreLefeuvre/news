@@ -16,6 +16,9 @@ import { TemplateComponent } from './news/template/template.component';
 //bitcoin
 import { BitcoinComponent } from './bitcoin/preview/bitcoin.component';
 
+//Ethereum
+import { PreviewComponent as EthereumComponent } from './ethereum/preview/preview.component';
+
 //meteo
 import { PreviewComponent } from './meteo/preview/preview.component';
 import { ViewComponent as MeteoComponent } from './meteo/view/view.component';
@@ -59,6 +62,7 @@ const appRoutes: Routes = [
     IndexComponent,
     TemplateComponent,
     BitcoinComponent,
+    EthereumComponent,
     PreviewComponent,
     MeteoComponent,
     IndexTutoComponent,

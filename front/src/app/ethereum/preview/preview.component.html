@@ -1,0 +1,8 @@
+<div *ngIf="data.length != 0" class='ether'>
+
+  <img src="../../assets/img/ethereum.png" alt="ethereum"> 
+
+  <span class='btc'>Ethereum value:</span>
+
+  <b>{{ data.result.ethusd | number : '1.2-2' }}</b> usd
+</div>

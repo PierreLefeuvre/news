@@ -25,7 +25,7 @@ export class PreviewComponent implements OnInit {
       this.meteoService.getMeteo().subscribe(result => {
           this.data = result;
           this.selectImage();
-          //console.log(result);
+          console.log(result);
         },
         error => console.log(error)
         );
@@ -51,7 +51,7 @@ export class PreviewComponent implements OnInit {
     var d = ('0' + date.getUTCDate()).slice(-2);
 
     if(format == 'Y-m-d H:i:s')
-      return y + '-' + m +  '-' + d + ' 09:00:00'; 
+      return y + '-' + m +  '-' + d + ' 10:00:00'; 
     else if(format == 'd/m')
       return d + '/' + m;
   }
