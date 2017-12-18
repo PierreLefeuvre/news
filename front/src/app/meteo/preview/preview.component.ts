@@ -13,7 +13,7 @@ export class PreviewComponent implements OnInit {
   data:any=[];
   @Input() date:Date=new Date();
   image:string;
-
+  error:string ='';
   constructor(private http:HttpClient, private meteoService: MeteoService) { }
 
   ngOnInit() {
@@ -25,17 +25,26 @@ export class PreviewComponent implements OnInit {
       this.meteoService.getMeteo().subscribe(result => {
           this.data = result;
           this.selectImage();
-          console.log(result);
+          //console.log(result);
         },
-        error => console.log(error)
+        error => {/*console.log(error);*/ this.error = 'Web service meteo indisponible.';}
         );
   }
   selectImage = function(){    
-       if(this.data[this.dateFormat(this.date)].risque_neige == 'oui'){
+  
+        var d = this.dateFormat(this.date);
+        //console.log('date: ' + d);
+
+        if(!this.data.hasOwnProperty(d)){
+         this.error = 'Meteo du ' + d + ' non disponible';
+          return false;
+        }
+
+        if(this.data[d].risque_neige == 'oui'){
           this.image = '../../assets/img/meteo/neige.svg';
-        }else if(this.data[this.dateFormat(this.date)].pluie > 4){
+        }else if(this.data[d].pluie > 4){
           this.image = '../../assets/img/meteo/pluie.svg';
-        }else if(this.data[this.dateFormat(this.date)].nebulosite.moyenne > 60){
+        }else if(this.data[d].nebulosite.moyenne > 60){
           this.image = '../../assets/img/meteo/nuage.svg';
         }else{
           this.image = '../../assets/img/meteo/soleil.svg';
@@ -49,10 +58,13 @@ export class PreviewComponent implements OnInit {
     var y = date.getFullYear();
     var m = ('0' + (date.getUTCMonth() + 1) ).slice(-2);
     var d = ('0' + date.getUTCDate()).slice(-2);
+    var h = ('0' + date.getUTCHours()).slice(-2);
 
     if(format == 'Y-m-d H:i:s')
-      return y + '-' + m +  '-' + d + ' 10:00:00'; 
+      return y + '-' + m +  '-' + d + ' ' + h + ':00:00'; 
     else if(format == 'd/m')
       return d + '/' + m;
+    else if(format == 'd/m H:i')
+      return d + '/' + m + ' ' + h + ':00';
   }
 }

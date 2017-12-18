@@ -16,9 +16,11 @@ export class AppComponent implements OnInit{
   constructor(private router:Router, public authGuard:AuthGuard, private titleService: Title){}
 
   ngOnInit() {
-    var d = new Date();
-    d.setDate(d.getDate() +1);   
-    
+    var d = new Date();    
+    d.setUTCDate(d.getUTCDate() +1);
+    d.setUTCHours(10);   
+    d.setUTCMinutes(0);
+    d.setUTCMinutes(0);
     this.meteoDate = d;
 
     this.setTitle(this.title);

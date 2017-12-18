@@ -13,9 +13,13 @@ export class ViewComponent implements OnInit {
 
   ngOnInit() {
     
-    for(var i=0; i<5; i++){
+    for(var i=10; i<=22; i+=3){
       var d = new Date();
-      d.setDate(d.getDate() +i);   
+      d.setUTCDate(d.getUTCDate() +1);
+      d.setUTCHours(i);   
+      d.setUTCMinutes(0);
+      d.setUTCMinutes(0);
+     // console.log(d);
       this.dates.push(d);
     }
   }

@@ -19,7 +19,7 @@ export class PreviewComponent implements OnInit {
     this.http.get(this.url).subscribe(
       result => { 
         this.data = result;
-        console.log(result); 
+        //console.log(result); 
       }
     );
   }

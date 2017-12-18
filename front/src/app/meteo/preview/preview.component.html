@@ -1,7 +1,7 @@
-<div class='meteo' *ngIf="data.length != 0">
+<div class='meteo' *ngIf="error.length == 0 && data.length != 0">
   <img [src]="image" alt="meteo">
   <span class='lieu'>{{ meteoService.lieu }}</span>
-  <span class='date'>{{ this.dateFormat(date, 'd/m') }}</span>
+  <span class='date'>{{ this.dateFormat(date, 'd/m H:i') }}</span>
   <span class='neige' *ngIf="data[dateFormat(date)].risque_neige == 'oui'">Risque de neige</span>
   <span class='temperature'>Température: {{ kelvinToCelsius(data[dateFormat(date)].temperature.sol) | number : '1.2-2'  }} °C</span>
 </div>
